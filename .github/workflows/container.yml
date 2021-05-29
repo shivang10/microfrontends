@@ -20,8 +20,11 @@ jobs:
       - run: npm install
       - run: npm run build
 
-      - uses: shinyinc/action-aws-cli@v1.2
-      - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
+      - name: S3 Sync
+        uses: ItsKarma/aws-cli@v1.70.0
+        with:
+          ## make sure you pass in absolute path
+          args: s3 sync packages/container/dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
