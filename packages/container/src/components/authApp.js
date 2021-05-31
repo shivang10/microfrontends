@@ -1,4 +1,4 @@
-import { mount } from 'auth/authApp';
+import { mount } from 'auth/AuthApp';
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
